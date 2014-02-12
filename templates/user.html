@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	{% if user %}
+		<h1 class="page-header">{{ user.login }}</h1>
+		{% for data in user %}
+			<p>{{ data }}</p>
+		{% endfor %}
+
+		<h2 class="page-header">Weights</h2>
+		{% if weights %}
+			{% for row in weights %}
+				<p>{{ row.timestamp.strftime('%d.%m.%Y %H:%M:%S') }}: {{ row.weight }}</p>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-info">
+				Sorry, no data yet. <a href="{{ url_for('update') }}">Update</a> your weight!
+			</div>
+		{% endif %}
+	{% endif %}
+{% endblock %}

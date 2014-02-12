@@ -1,0 +1,5 @@
+weightr:
+{
+	debug: False,
+	secret_key: 'INSERT REALY SECRET KEY HERE!',
+}

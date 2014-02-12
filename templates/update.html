@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+	<h1 class="page-header">Update</h1>
+
+	<form class="form-horizontal" role="form" action="{{ url_for('update') }}" method="POST">
+		<div class="form-group {% if error %} has-error {% endif %}">
+			<label class="col-sm-1 control-label" for="weight">Weight</label>
+			<div class="col-sm-3">
+				{% if error %}
+					<label class="control-label" for="weight">{{ error }}</label>
+				{% endif %}
+				<input type="number" step="0.01" min="0" class="form-control input-lg" id="weight" name="weight" placeholder="12,34" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-1 col-sm-3">
+				<button class="btn btn-lg btn-primary" type="submit">Save</button>
+			</div>
+		</div>
+	</form>
+{% endblock %}

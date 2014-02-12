@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="/static/gfx/favicon.ico">
+
+		<title>Login</title>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="/static/css/signin.css" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			{% with messages = get_flashed_messages(with_categories=True) %}
+				{% if messages %}
+				<div class="flashes">
+					{% for category, message in messages %}
+					<div class="alert alert-{{ category if not category == 'message' else 'info' }}">
+						{{ message }}
+					</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+			{% endwith %}
+
+			<form class="form-signin" role="form" action="{{ url_for('login') }}" method="POST">
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<input type="login" name="login" class="form-control" placeholder="Username" required autofocus>
+				<input type="password" name="pass" class="form-control" placeholder="Password" required>
+				<!--
+				<label class="checkbox">
+					<input type="checkbox" value="remember-me"> Remember me
+				</label>
+				-->
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</form>
+
+		</div> 
+	</body>
+</html>
